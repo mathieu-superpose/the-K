@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import './index.scss';
 
 const App = () => {
   return (
