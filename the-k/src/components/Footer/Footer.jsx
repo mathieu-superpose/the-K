@@ -4,7 +4,7 @@ const Footer = () => {
 
   return (
     <nav className="Footer">
-        <p>hello from footer</p>
+        <p>THP Next 2021</p>
     </nav>
   );
 };

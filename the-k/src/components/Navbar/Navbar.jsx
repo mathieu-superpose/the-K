@@ -6,7 +6,15 @@ const Navbar = () => {
 
   return (
     <nav className="Navbar">
-        <p>hello from navbar</p>
+        <Link to="/">
+          <p>Home</p>
+        </Link>
+        <Link to="/register">
+          <p>Register</p>
+        </Link>
+        <Link to="/login">
+          <p>Login</p>
+        </Link>
     </nav>
   );
 };

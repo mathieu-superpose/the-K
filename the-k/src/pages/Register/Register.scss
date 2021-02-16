@@ -1,0 +1,9 @@
+@import 'index.scss';
+
+.Register {
+
+	&__Form {
+		display:flex;
+		flex-direction: column;
+	}
+}
