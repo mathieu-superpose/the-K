@@ -12,7 +12,12 @@ const App = () => {
             <Navbar />
             <main>
               <Switch>
-                <p>coucou from app switch</p>
+                <Route path="/" exact>
+                  <p>coucou from home</p>
+                </Route>
+                <Route path="/register">
+                  <p>coucou from register</p>
+                </Route>
               </Switch>
             </main>
             <Footer />
