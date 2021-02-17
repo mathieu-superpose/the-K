@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Cookies from 'js-cookie'
 import { useSelector, useDispatch } from 'react-redux';
-import { setID } from 'actions';
+import { setID, setName } from 'actions';
 import { useHistory } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 import { Link } from 'react-router-dom';
@@ -24,6 +24,7 @@ const Login = () => {
 		.then((response) => response.json())
 		.then((response) => {
 			dispatch(setID(response.user.id));
+			dispatch(setName(response.user.username));
 			Cookies.set('token', response.jwt);
 			history.push("/");
 		})

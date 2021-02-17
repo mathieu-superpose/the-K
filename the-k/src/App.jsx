@@ -12,10 +12,10 @@ import OwnProfile from 'pages/OwnProfile/OwnProfile';
 import Profile from 'pages/Profile/Profile';
 
 const App = () => {
-  const hasID = useSelector(state => state);
+  const id = useSelector(state => state.id);
 
   const checkAuth = () => {
-    return hasID === '' ? false :  true
+    return id === '' ? false :  true
   }
 
   const PrivateRoute = ({ component: Component, ...rest }) => (

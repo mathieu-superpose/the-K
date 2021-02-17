@@ -4,3 +4,10 @@ export const setID = (id) => {
 		payload: id
 	};
 };
+
+export const setName = (name) => {
+	return {
+		type: 'SET_NAME',
+		payload: name
+	};
+};
