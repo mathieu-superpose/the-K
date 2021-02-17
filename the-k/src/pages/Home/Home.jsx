@@ -2,7 +2,7 @@ const Home = () => {
 
   return (
     <nav className="Home">
-        <p>hello from home again</p>
+        <p>hello from public home</p>
     </nav>
   );
 };
