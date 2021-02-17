@@ -8,9 +8,8 @@ import Footer from 'components/Footer/Footer';
 import Home from 'pages/Home/Home';
 import Register from 'pages/Register/Register';
 import Login from 'pages/Login/Login';
+import OwnProfile from 'pages/OwnProfile/OwnProfile';
 import Profile from 'pages/Profile/Profile';
-
-
 
 const App = () => {
   const hasID = useSelector(state => state);
@@ -38,7 +37,7 @@ const App = () => {
             <Route path="/" exact component={Home} />
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
-            <PrivateRoute path="/profile" component={Profile} />
+            <PrivateRoute path="/users/me" component={OwnProfile} />
           </Switch>
         </main>
         <Footer />
