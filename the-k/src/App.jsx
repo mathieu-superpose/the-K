@@ -16,7 +16,7 @@ const App = () => {
   const hasID = useSelector(state => state);
 
   const checkAuth = () => {
-    return hasID==='' ? false :  true
+    return hasID === '' ? false :  true
   }
 
   const PrivateRoute = ({ component: Component, ...rest }) => (
