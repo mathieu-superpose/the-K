@@ -1,12 +1,15 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import Cookies from 'js-cookie'
-import { Redirect } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { logIn } from 'actions';
 import { useHistory } from 'react-router-dom';
 import './Register.scss';
 
 const Register = () => {
+	const isLogged = useSelector(state => state.isLogged);
+  	const dispatch = useDispatch();
+
 	const { register, handleSubmit, watch, errors } = useForm();
 	const history = useHistory();
   	const onSubmit = data => {
@@ -18,6 +21,10 @@ const Register = () => {
   		  },
   		  body: JSON.stringify(data)
 		});
+		//wait for response (then response, data to JSON)
+		//catch errors
+		//cookie
+		dispatch(logIn());
 		history.push("/");
   	}
 
