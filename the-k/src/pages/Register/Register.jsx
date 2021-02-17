@@ -2,8 +2,9 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import Cookies from 'js-cookie'
 import { useSelector, useDispatch } from 'react-redux';
-import { logIn } from 'actions';
+import { setID } from 'actions';
 import { useHistory } from 'react-router-dom';
+import jwt_decode from "jwt-decode";
 import './Register.scss';
 
 const Register = () => {
@@ -20,12 +21,19 @@ const Register = () => {
     		'Content-Type': 'application/json'
   		  },
   		  body: JSON.stringify(data)
-		});
+		})
+		.then((response) => response.json())
+		.then((response) => {
+			console.log(response);
+			dispatch(setID(response.user.id));
+			console.log(jwt_decode(response.jwt))
+			Cookies.set('token', response.jwt);
+			history.push("/");
+		})
 		//wait for response (then response, data to JSON)
 		//catch errors
 		//cookie
-		dispatch(logIn());
-		history.push("/");
+		
   	}
 
 	return (
