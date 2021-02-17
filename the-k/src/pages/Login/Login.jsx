@@ -14,7 +14,7 @@ const Login = () => {
 	const { register, handleSubmit, watch, errors } = useForm();
 	const history = useHistory();
   	const onSubmit = data => {
-  		console.log(data);
+  		// console.log(data);
   		fetch('http://localhost:1337/auth/local', {
   		  method: 'post',
   		  headers: {
@@ -24,9 +24,9 @@ const Login = () => {
 		})
 		.then((response) => response.json())
 		.then((response) => {
-			console.log(response);
+			// console.log(response);
 			dispatch(setID(response.user.id));
-			console.log(jwt_decode(response.jwt))
+			// console.log(jwt_decode(response.jwt))
 			Cookies.set('token', response.jwt);
 			history.push("/");
 		})
