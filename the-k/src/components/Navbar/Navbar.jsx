@@ -12,7 +12,7 @@ const Navbar = () => {
         <Link to="/">
           <img src={logo} alt='the k logo' />
         </Link>
-        {hasID==='' ? <Link to="/login"><p>Login</p></Link> :  <p>ID: {hasID}</p>}
+        {hasID==='' ? <Link to="/login"><p>Login</p></Link> :  <Link to="/profile"><p>ID: {hasID}</p></Link>}
     </nav>
   );
 };

@@ -7,6 +7,7 @@ import Footer from 'components/Footer/Footer';
 import Home from 'pages/Home/Home';
 import Register from 'pages/Register/Register';
 import Login from 'pages/Login/Login';
+import Profile from 'pages/Profile/Profile';
 
 const App = () => {
   return (
@@ -23,6 +24,9 @@ const App = () => {
             </Route>
             <Route path="/login">
               <Login />
+            </Route>
+            <Route path="/profile">
+              <Profile />
             </Route>
           </Switch>
         </main>
