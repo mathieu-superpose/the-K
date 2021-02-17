@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 import './Login.scss';
 
 const Login = () => {
-	const isLogged = useSelector(state => state.isLogged);
   	const dispatch = useDispatch();
 
 	const { register, handleSubmit, watch, errors } = useForm();

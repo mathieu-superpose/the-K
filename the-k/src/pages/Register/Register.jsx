@@ -8,7 +8,6 @@ import jwt_decode from "jwt-decode";
 import './Register.scss';
 
 const Register = () => {
-	const isLogged = useSelector(state => state.isLogged);
   	const dispatch = useDispatch();
 
 	const { register, handleSubmit, watch, errors } = useForm();
