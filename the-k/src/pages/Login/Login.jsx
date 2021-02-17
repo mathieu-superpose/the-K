@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Cookies from 'js-cookie'
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,11 +10,10 @@ import './Login.scss';
 
 const Login = () => {
   	const dispatch = useDispatch();
-
+  	const [displayError, setDisplayError] = useState('');
 	const { register, handleSubmit, watch, errors } = useForm();
 	const history = useHistory();
   	const onSubmit = data => {
-  		// console.log(data);
   		fetch('http://localhost:1337/auth/local', {
   		  method: 'post',
   		  headers: {
@@ -24,16 +23,11 @@ const Login = () => {
 		})
 		.then((response) => response.json())
 		.then((response) => {
-			// console.log(response);
 			dispatch(setID(response.user.id));
-			// console.log(jwt_decode(response.jwt))
 			Cookies.set('token', response.jwt);
 			history.push("/");
 		})
-		//wait for response (then response, data to JSON)
-		//catch errors
-		//cookie
-		
+		.catch((error) => setDisplayError('Mauvais identifiant / password'));
   	}
 
 	return (
@@ -42,6 +36,7 @@ const Login = () => {
 		    <input name="identifier" type="email" placeholder="email" ref={register({ required: true })} />
 		    <input name="password" type="password" placeholder="password" ref={register({ required: true })} />
 	  	    <input type="submit" />
+	  	    <p>{displayError}</p>
 	  	    <Link to="/register">
           	  <p>Register</p>
         	</Link>

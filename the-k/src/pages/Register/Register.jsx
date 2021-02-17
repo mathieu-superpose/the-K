@@ -15,7 +15,6 @@ const Register = () => {
 	const history = useHistory();
 
   	const onSubmit = data => {
-  		// console.log(data);
   		fetch('http://localhost:1337/auth/local/register', {
   		  method: 'post',
   		  headers: {
@@ -25,13 +24,11 @@ const Register = () => {
 		})
 		.then((response) => response.json())
 		.then((response) => {
-			// console.log(response);
 			dispatch(setID(response.user.id));
-			// console.log(jwt_decode(response.jwt))
 			Cookies.set('token', response.jwt);
 			history.push("/");
 		})
-		.catch((error) => setDisplayError('error'));
+		.catch((error) => setDisplayError('Email déjà utilisé'));
   	}
 
 	return (
@@ -40,7 +37,7 @@ const Register = () => {
 		  <input name="email" type="email" placeholder="email" ref={register({ required: true })} />
 		  <input name="password" type="password" placeholder="password" ref={register({ required: true })} />
 	  	  <input type="submit" />
-	  	  <p>error: {displayError}</p>
+	  	  <p>{displayError}</p>
 	    </form>
 	);
 };
