@@ -29,7 +29,7 @@ const Register = () => {
 			dispatch(setID(response.user.id));
 			// console.log(jwt_decode(response.jwt))
 			Cookies.set('token', response.jwt);
-			// history.push("/");
+			history.push("/");
 		})
 		.catch((error) => setDisplayError('error'));
   	}
