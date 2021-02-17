@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Cookies from 'js-cookie'
 import jwt_decode from "jwt-decode";
+import Message from 'components/Message/Message'
 import './Home.scss';
 
 const Home = () => {
@@ -26,9 +27,13 @@ const Home = () => {
 	return (
 		<nav className="Home">
     		<p>Welcome on My Social Network. This website is a training to Redux and React. We use auth and routing to create a small social media website.</p>
-        	<p>hello from public home</p>
-        	<p>{displayError}</p>
-    	</nav>
+        <p>{displayError}</p>
+      	<ul className='Home__messages'>
+      	{messages && messages.map((message) => (
+      		<Message message={message}/>
+      	))}
+      	</ul>
+    </nav>
 	);
 };
 
