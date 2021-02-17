@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import './OwnProfile.scss';
 
 const OwnProfile = () => {
-	const hasID = useSelector(state => state);
+	const id = useSelector(state => state.id);
 	const [displayError, setDisplayError] = useState('');
 	const [name, setName] = useState('');
 	const [description, setDescription] = useState('');
@@ -15,7 +15,7 @@ const OwnProfile = () => {
 	const history = useHistory();
 
   	const loadProfile = () => {
-  		fetch(`http://localhost:1337/users/${hasID}`, {
+  		fetch(`http://localhost:1337/users/${id}`, {
   		  method: 'get',
   		  headers: {
     		'Authorization': `Bearer ${Cookies.get('token')}`,
@@ -24,15 +24,14 @@ const OwnProfile = () => {
 		})
 		.then((response) => response.json())
 		.then((response) => {
-			console.log(response)
 			setName(response.username)
 			setDescription(response.description)
 		})
-		.catch((error) => console.log(error));
+		.catch((error) => setDisplayError('Erreur en cours...'));
   	}
 
   	const updateProfile = data => {
-  		fetch(`http://localhost:1337/users/${hasID}`, {
+  		fetch(`http://localhost:1337/users/${id}`, {
   		  method: 'put',
   		  headers: {
     		'Authorization': `Bearer ${Cookies.get('token')}`,
