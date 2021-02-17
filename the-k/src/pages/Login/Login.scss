@@ -1,0 +1,9 @@
+@import 'index.scss';
+
+.Login {
+
+	&__Form {
+		display:flex;
+		flex-direction: column;
+	}
+}

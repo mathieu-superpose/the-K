@@ -1,0 +1,9 @@
+@import 'index.scss';
+
+.OwnProfile {
+
+	&__Form {
+		display:flex;
+		flex-direction: column;
+	}
+}
