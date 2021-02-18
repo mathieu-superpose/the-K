@@ -1,9 +1,22 @@
 @import 'index.scss';
 
 .Login {
-
-	&__Form {
+	&__card {
+		border: 2px solid orange;
+		padding: 20px;
+		&__form {
 		display:flex;
 		flex-direction: column;
+			&__email,
+			&__password,
+			&__button {
+				padding: 10px;
+				margin: 10px;
+			}
+			&__email,
+			&__password {
+				background-color: white;
+			}
+		}
 	}
 }

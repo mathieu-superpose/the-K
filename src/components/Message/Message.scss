@@ -1,27 +1,39 @@
 @import 'index.scss';
 
 .Message {
+	border: 2px solid white;
+	list-style: none;
+	width: 600px;
+	padding: 20px;
+	margin: 20px;
+	margin-left: -20px;
+
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
-	flex-wrap: wrap;
-	max-width: 900px;
-	border: 1px solid white;
-	margin: 10px;
-	padding: 20px;
 
 	&__username {
 		color: orange;
-		width: 100px;
-		background-color: blue;
+		margin-left: 10px;
 	}
 	&__text {
-		width: 400px;
 		text-align:center;
-		background-color: green;
 	}
-	&__heart {
-		width: 100px;
-		background-color: blue;
+	&__right {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		&__bin {
+			height: 35px;
+			justify-self: flex-start;
+		}
+		&__count {
+			position: relative;
+			right: 15px;
+			top: 15px;
+		}
+		&__heart {
+			height: 35px;
+			padding: 10px;
+		}
 	}
 }

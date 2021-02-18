@@ -1,20 +1,30 @@
 @import 'index.scss';
 
 .Post {
-	background-color: blue;
-	padding: 10px;
-	border-radius: 15px;
+	border: 2px solid orange;
+	width: 600px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
 	&__title {
 		font-size: 20px;
 		text-align: center;
 	}
+	::placeholder {
+  		color: coral;
+  	}
 
 	&__form {
-		background-color: red;
 
 		&__text {
 			width: 300px;
+			padding: 10px;
+
+		}
+		&__button {
+			padding: 10px;
 		}
 	}
 }

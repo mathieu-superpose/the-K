@@ -4,6 +4,7 @@ import { setName } from 'actions';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
+import { url } from 'url/url.json';
 import './OwnProfile.scss';
 
 const OwnProfile = () => {
@@ -17,7 +18,7 @@ const OwnProfile = () => {
 	const history = useHistory();
 
   	const loadProfile = () => {
-  		fetch(`http://localhost:1337/users/${id}`, {
+  		fetch(`${url}users/${id}`, {
   		  method: 'get',
   		  headers: {
     		'Authorization': `Bearer ${Cookies.get('token')}`,
@@ -33,7 +34,7 @@ const OwnProfile = () => {
   	}
 
   	const updateProfile = data => {
-  		fetch(`http://localhost:1337/users/${id}`, {
+  		fetch(`${url}users/${id}`, {
   		  method: 'put',
   		  headers: {
     		'Authorization': `Bearer ${Cookies.get('token')}`,
@@ -58,13 +59,17 @@ const OwnProfile = () => {
 
   return (
     <nav className="OwnProfile">
-        <p>hello from my own profile again</p>
-        <form className="OwnProfile__details" onSubmit={handleSubmit(updateProfile)}>
-		  <input name="username" type="text" defaultValue={username} ref={register({ required: true })} />
-		  <input name="description" type="text" defaultValue={description} ref={register({ required: true })} />
-	  	  <input type="submit" />
+    <h2>Mise à jour de mon profil</h2>
+    	<div className="OwnProfile__card">
+        <form className="OwnProfile__card__details" onSubmit={handleSubmit(updateProfile)}>
+          <label className="OwnProfile__card__details__label">username</label>
+		  <input className="OwnProfile__card__details__username" name="username" type="text" defaultValue={username} ref={register({ required: true })} />
+		  <label className="OwnProfile__card__details__label">description</label>
+		  <input className="OwnProfile__card__details__description" name="description" type="text" defaultValue={description} ref={register({ required: true })} />
+	  	  <input className="OwnProfile__card__details__button" type="submit" value="Mettre à jour"/>
 	  	  <p>{displayError}</p>
 	    </form>
+	    </div>
     </nav>
   );
 };

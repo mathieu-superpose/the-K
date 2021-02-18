@@ -5,9 +5,8 @@
 }
 
 main {
-	display:flex;
-	flex-direction: column;
-	align-items: center;
+	display: flex;
+	justify-content: center;
 }
 
 .Home,
@@ -17,8 +16,8 @@ main {
 .OwnProfile,
 .NoMatch {
 	min-height: 85vh;
-	max-width: 1000px;
 	display:flex;
 	flex-direction: column;
 	align-items: center;
+	max-width: 1000px;
 }

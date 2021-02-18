@@ -1,9 +1,24 @@
 @import 'index.scss';
 
 .Register {
-
-	&__Form {
+	
+	&__form {
 		display:flex;
 		flex-direction: column;
+		border: 2px solid orange;
+		padding: 20px;
+
+		&__username,
+		&__email,
+		&__password,
+		&__button {
+			padding: 10px;
+			margin: 10px;
+		}
+		&__username,
+		&__email,
+		&__password {
+			background-color: white;
+		}
 	}
 }
