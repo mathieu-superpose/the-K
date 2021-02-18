@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import {Link} from 'react-router-dom'
-import heart from './img/heart.svg'
+import {Link} from 'react-router-dom';
+import heart from './img/heart.svg';
+import bin from './img/bin.svg'
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { url } from 'url/url.json';
 import Cookies from 'js-cookie';
 import './Message.scss';
 
@@ -13,7 +15,7 @@ const Message = ({ message, loadPosts }) => {
     const history = useHistory();
 
     const deletePost = () => {
-      fetch(`http://localhost:1337/posts/${message.id}`, {
+      fetch(`${url}posts/${message.id}`, {
         method: 'delete',
         headers: {
         'Authorization': `Bearer ${Cookies.get('token')}`,
@@ -35,11 +37,11 @@ const Message = ({ message, loadPosts }) => {
 
     	<p className='Message__text'>{message.text}</p>
 
-    	<div className='Message__heart'>
-    	  <img className='Message__heart__img' src={heart} alt='pixelised heart'/>
-          <p className='Message__heart__count'>like:{message.like}</p>
-          {message.user.id===id ? <p className='Message__heart__delete' onClick={deletePost} >delete</p> : ''}
-          <p>{displayError}</p>
+    	<div className='Message__right'>
+        {message.user.id===id ? <img className='Message__right__bin' src={bin} onClick={deletePost} /> : ''}
+    	  <img className='Message__right__heart' src={heart} alt='pixelised heart'/>
+        <p className='Message__right__count'>{message.like>0 ? message.like : '\xa0\xa0'}</p>
+        <p>{displayError}</p>
     	</div>
     
     </li>

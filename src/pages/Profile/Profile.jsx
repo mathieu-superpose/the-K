@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import Message from 'components/Message/Message';
+import { url } from 'url/url.json';
 import './Profile.scss';
 
 const Profile = ({ match }) => {
@@ -14,7 +15,7 @@ const Profile = ({ match }) => {
   const [messages, setMessages] = useState('');
 
 	const loadProfile = () => {
-  		fetch(`http://localhost:1337/users/${id}`, {
+  		fetch(`${url}users/${id}`, {
   		  method: 'get',
   		  headers: {
     		'Authorization': `Bearer ${Cookies.get('token')}`,
@@ -30,7 +31,7 @@ const Profile = ({ match }) => {
   	}
 
   const loadPosts = data => {
-      fetch(`http://localhost:1337/posts?user.id=${id}`, {
+      fetch(`${url}posts?user.id=${id}`, {
         method: 'get',
         headers: {
         'Content-Type': 'application/json'

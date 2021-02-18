@@ -4,6 +4,7 @@ import Cookies from 'js-cookie'
 import { useSelector, useDispatch } from 'react-redux';
 import { setID, setName } from 'actions';
 import { useHistory } from 'react-router-dom';
+import { url } from 'url/url.json';
 import jwt_decode from "jwt-decode";
 import { Link } from 'react-router-dom';
 import './Login.scss';
@@ -14,7 +15,7 @@ const Login = () => {
 	const { register, handleSubmit, watch, errors } = useForm();
 	const history = useHistory();
   	const onSubmit = data => {
-  		fetch('http://localhost:1337/auth/local', {
+  		fetch(`${url}auth/local`, {
   		  method: 'post',
   		  headers: {
     		'Content-Type': 'application/json'

@@ -4,6 +4,7 @@ import Cookies from 'js-cookie'
 import { useSelector, useDispatch } from 'react-redux';
 import { setID } from 'actions';
 import { useHistory } from 'react-router-dom';
+import { url } from 'url/url.json';
 import jwt_decode from "jwt-decode";
 import './Register.scss';
 
@@ -15,7 +16,7 @@ const Register = () => {
 	const history = useHistory();
 
   	const onSubmit = data => {
-  		fetch('http://localhost:1337/auth/local/register', {
+  		fetch(`${url}auth/local/register`, {
   		  method: 'post',
   		  headers: {
     		'Content-Type': 'application/json'

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Cookies from 'js-cookie';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { url } from 'url/url.json';
 import Post from 'components/Post/Post';
 import Message from 'components/Message/Message';
 import './Home.scss';
@@ -12,7 +13,7 @@ const Home = () => {
     const id = useSelector(state => state.id);
 
   	const loadPosts = data => {
-  		fetch('http://localhost:1337/posts', {
+  		fetch(`${url}posts`, {
   		  method: 'get',
   		  headers: {
     		'Content-Type': 'application/json'
@@ -24,7 +25,7 @@ const Home = () => {
   	}
 
     const createPost = data => {
-      fetch('http://localhost:1337/posts', {
+      fetch(`${url}posts`, {
         method: 'post',
         headers: {
         'Authorization': `Bearer ${Cookies.get('token')}`,
@@ -43,6 +44,7 @@ const Home = () => {
 
 	return (
 		<div className="Home">
+        <p>{displayError}</p>
     		{!id &&
           <p>Welcome on My Social Network. This website is a training to Redux and React. We use auth and routing to create a small social media website.</p>
         }
@@ -56,7 +58,7 @@ const Home = () => {
       		<Message message={message} key={message.id} loadPosts={loadPosts}/>
       	)).reverse()}
       	</ul>
-        <p>{displayError}</p>
+        
     </div>
 	);
 };

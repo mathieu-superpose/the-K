@@ -4,6 +4,7 @@ import { setName } from 'actions';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
+import { url } from 'url/url.json';
 import './OwnProfile.scss';
 
 const OwnProfile = () => {
@@ -17,7 +18,7 @@ const OwnProfile = () => {
 	const history = useHistory();
 
   	const loadProfile = () => {
-  		fetch(`http://localhost:1337/users/${id}`, {
+  		fetch(`${url}users/${id}`, {
   		  method: 'get',
   		  headers: {
     		'Authorization': `Bearer ${Cookies.get('token')}`,
@@ -33,7 +34,7 @@ const OwnProfile = () => {
   	}
 
   	const updateProfile = data => {
-  		fetch(`http://localhost:1337/users/${id}`, {
+  		fetch(`${url}users/${id}`, {
   		  method: 'put',
   		  headers: {
     		'Authorization': `Bearer ${Cookies.get('token')}`,
