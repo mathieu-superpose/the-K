@@ -1,0 +1,27 @@
+@import 'index.scss';
+
+.Message {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	max-width: 900px;
+	border: 1px solid white;
+	margin: 10px;
+	padding: 20px;
+
+	&__username {
+		color: orange;
+		width: 100px;
+		background-color: blue;
+	}
+	&__text {
+		width: 400px;
+		text-align:center;
+		background-color: green;
+	}
+	&__heart {
+		width: 100px;
+		background-color: blue;
+	}
+}
