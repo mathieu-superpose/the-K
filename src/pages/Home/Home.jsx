@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
-import Cookies from 'js-cookie'
-import jwt_decode from "jwt-decode";
+import Cookies from 'js-cookie';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
+import Post from 'components/Post/Post';
 import Message from 'components/Message/Message';
-import { useForm } from "react-hook-form";
 import './Home.scss';
 
 const Home = () => {
   	const [displayError, setDisplayError] = useState('');
   	const [messages, setMessages] = useState('');
-    const { register, handleSubmit, watch, errors } = useForm();
     const id = useSelector(state => state.id);
 
   	const loadPosts = data => {
@@ -36,7 +33,7 @@ const Home = () => {
         body: JSON.stringify(data)
     })
     .then((response) => response.json())
-    .then((response) => setMessages([...messages , response]))
+    .then((response) => setMessages([...messages, response]))
     .catch((error) => setDisplayError('Pas authentifié'));
     }
 
@@ -49,17 +46,9 @@ const Home = () => {
     		{!id &&
           <p>Welcome on My Social Network. This website is a training to Redux and React. We use auth and routing to create a small social media website.</p>
         }
-        
+
         {id && 
-        <div className='Post'>
-          <h2 className='Post__title'>Poster un nouveau message</h2>
-          <form onSubmit={handleSubmit(createPost)} className='Post__form'>
-            <input name="user" type="hidden" value={id} ref={register({ required: true })} />
-            <input className='Post__form__text' name="text" type="text" placeholder="nouveau message" ref={register({ required: true, maxLength: 140 })} />
-            <input className='Post__form__button' type="submit" />
-            <p className='Post__form__error'>{displayError}</p>
-          </form>
-        </div>
+        <Post createPost={createPost} id={id} displayError={displayError}/>
         }
 
       	<ul className='Home__messages'>
