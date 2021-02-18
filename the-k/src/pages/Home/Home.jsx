@@ -46,16 +46,18 @@ const Home = () => {
 
 	return (
 		<div className="Home">
-    		<p>Welcome on My Social Network. This website is a training to Redux and React. We use auth and routing to create a small social media website.</p>
+    		{!id &&
+          <p>Welcome on My Social Network. This website is a training to Redux and React. We use auth and routing to create a small social media website.</p>
+        }
         
         {id && 
         <div className='Post'>
-          <p>nouveau message</p>
-          <form onSubmit={handleSubmit(createPost)} className="Post__form">
+          <h2 className='Post__title'>Poster un nouveau message</h2>
+          <form onSubmit={handleSubmit(createPost)} className='Post__form'>
             <input name="user" type="hidden" value={id} ref={register({ required: true })} />
-            <input name="text" type="text" placeholder="nouveau message" ref={register({ required: true })} />
-            <input type="submit" />
-            <p>{displayError}</p>
+            <input className='Post__form__text' name="text" type="text" placeholder="nouveau message" ref={register({ required: true, maxLength: 140 })} />
+            <input className='Post__form__button' type="submit" />
+            <p className='Post__form__error'>{displayError}</p>
           </form>
         </div>
         }

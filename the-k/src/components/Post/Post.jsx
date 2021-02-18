@@ -4,7 +4,7 @@ const Post = () => {
 
     return (
         <div className='Post'>
-			<p>nouveau message</p>
+			<h2 className='Post__title'>nouveau message</h2>
 	        <form onSubmit={handleSubmit(createPost)} className="Post__form">
 	          <input name="user" type="hidden" value={id} ref={register({ required: true })} />
 	          <input name="text" type="text" placeholder="nouveau message" ref={register({ required: true })} />

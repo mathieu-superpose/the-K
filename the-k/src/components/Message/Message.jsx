@@ -6,7 +6,9 @@ const Message = ({ message }) => {
 
   return (
     <li className='Message'>
+    	<Link to={`/users/${message.user.id}`}>
     	<p>{message.user.username}</p>
+		</Link>
     	<p>{message.text}</p>
     </li>
   );

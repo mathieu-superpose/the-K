@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
-import { useSelector } from 'react-redux';
+import { setName } from 'actions';
+import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import './OwnProfile.scss';
@@ -8,9 +9,10 @@ import './OwnProfile.scss';
 const OwnProfile = () => {
 	const id = useSelector(state => state.id);
 	const [displayError, setDisplayError] = useState('');
-	const [name, setName] = useState('');
+	const [username, setUsername] = useState('');
 	const [description, setDescription] = useState('');
 	const { register, handleSubmit, watch, errors } = useForm();
+	const dispatch = useDispatch();
 
 	const history = useHistory();
 
@@ -24,7 +26,7 @@ const OwnProfile = () => {
 		})
 		.then((response) => response.json())
 		.then((response) => {
-			setName(response.username)
+			setUsername(response.username)
 			setDescription(response.description)
 		})
 		.catch((error) => setDisplayError('Erreur en cours...'));
@@ -41,9 +43,11 @@ const OwnProfile = () => {
 		})
 		.then((response) => response.json())
 		.then((response) => {
-			setName(response.username)
-			setDescription(response.description)
-			history.push("/users/me");
+			console.log(response);
+			setUsername(response.username);
+			setDescription(response.description);
+			dispatch(setName(response.username));
+			history.push("/");
 		})
 		.catch((error) => console.log(error));
   	}
@@ -56,10 +60,10 @@ const OwnProfile = () => {
     <nav className="OwnProfile">
         <p>hello from my own profile again</p>
         <form className="OwnProfile__details" onSubmit={handleSubmit(updateProfile)}>
-		  <input name="username" type="text" placeholder={name} ref={register({ required: true })} />
-		  <input name="description" type="text" placeholder={description} ref={register({ required: true })} />
+		  <input name="username" type="text" defaultValue={username} ref={register({ required: true })} />
+		  <input name="description" type="text" defaultValue={description} ref={register({ required: true })} />
 	  	  <input type="submit" />
-	  	  <p>error: {displayError}</p>
+	  	  <p>{displayError}</p>
 	    </form>
     </nav>
   );

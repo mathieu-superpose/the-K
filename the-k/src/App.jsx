@@ -10,12 +10,13 @@ import Register from 'pages/Register/Register';
 import Login from 'pages/Login/Login';
 import OwnProfile from 'pages/OwnProfile/OwnProfile';
 import Profile from 'pages/Profile/Profile';
+import NoMatch from 'pages/NoMatch/NoMatch';
 
 const App = () => {
   const id = useSelector(state => state.id);
 
   const checkAuth = () => {
-    return id === '' ? false :  true
+    return id === '' ? false : true
   }
 
   const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -38,6 +39,8 @@ const App = () => {
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
             <PrivateRoute path="/users/me" component={OwnProfile} />
+            <PrivateRoute path="/users/:id" component={Profile} />
+            <Route component={NoMatch} />
           </Switch>
         </main>
         <Footer />

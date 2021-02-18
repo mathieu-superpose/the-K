@@ -5,17 +5,14 @@ import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import './Profile.scss';
 
-const Profile = () => {
-	const hasID = useSelector(state => state);
-	const [displayError, setDisplayError] = useState('');
-	const [name, setName] = useState('');
+const Profile = ({ match }) => {
+	const id = match.url.match(/\d+/g);
+	const [username, setUsername] = useState('');
 	const [description, setDescription] = useState('');
-	const { register, handleSubmit, watch, errors } = useForm();
+	const [displayError, setDisplayError] = useState('');
 
-	const history = useHistory();
-
-  	const loadProfile = () => {
-  		fetch(`http://localhost:1337/users/${hasID}`, {
+	const loadProfile = () => {
+  		fetch(`http://localhost:1337/users/${id}`, {
   		  method: 'get',
   		  headers: {
     		'Authorization': `Bearer ${Cookies.get('token')}`,
@@ -24,28 +21,10 @@ const Profile = () => {
 		})
 		.then((response) => response.json())
 		.then((response) => {
-			setName(response.username)
+			setUsername(response.username)
 			setDescription(response.description)
 		})
-		.catch((error) => console.log(error));
-  	}
-
-  	const updateProfile = data => {
-  		fetch(`http://localhost:1337/users/${hasID}`, {
-  		  method: 'put',
-  		  headers: {
-    		'Authorization': `Bearer ${Cookies.get('token')}`,
-    		'Content-Type': 'application/json'
-  		  },
-  		  body: JSON.stringify(data)
-		})
-		.then((response) => response.json())
-		.then((response) => {
-			setName(response.username)
-			setDescription(response.description)
-			history.push("/users/me");
-		})
-		.catch((error) => console.log(error));
+		.catch((error) => setDisplayError('Erreur en cours...'));
   	}
 
   	useEffect(() => {
@@ -54,13 +33,9 @@ const Profile = () => {
 
   return (
     <nav className="Profile">
-        <p>hello from my own profile again</p>
-        <form className="OwnProfile__details" onSubmit={handleSubmit(updateProfile)}>
-		  <input name="username" type="text" placeholder={name} ref={register({ required: true })} />
-		  <input name="description" type="text" placeholder={description} ref={register({ required: true })} />
-	  	  <input type="submit" />
-	  	  <p>error: {displayError}</p>
-	    </form>
+        <p>{username}</p>
+        <p>{description}</p>
+        <p>{displayError}</p>
     </nav>
   );
 };
