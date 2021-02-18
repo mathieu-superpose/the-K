@@ -59,8 +59,8 @@ const OwnProfile = () => {
 
   return (
     <nav className="OwnProfile">
+    <h2>Mise à jour de mon profil</h2>
     	<div className="OwnProfile__card">
-        <h2>Mise à jour de mon profil</h2>
         <form className="OwnProfile__card__details" onSubmit={handleSubmit(updateProfile)}>
           <label className="OwnProfile__card__details__label">username</label>
 		  <input className="OwnProfile__card__details__username" name="username" type="text" defaultValue={username} ref={register({ required: true })} />

@@ -2,9 +2,11 @@
 
 .Login {
 	&__card {
+		border: 2px solid orange;
+		padding: 20px;
+		&__form {
 		display:flex;
 		flex-direction: column;
-		&__form {
 			&__email,
 			&__password,
 			&__button {

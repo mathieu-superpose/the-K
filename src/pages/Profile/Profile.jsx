@@ -49,9 +49,11 @@ const Profile = ({ match }) => {
 
   return (
     <nav className="Profile">
-        <p>{username}</p>
-        <p>{description}</p>
+      
+        <h2>{username}</h2>
+        <p className="Profile__description">{description}</p>
         <p>{displayError}</p>
+      
         <ul className='Home__messages'>
         {messages && messages.map((message) => (
           <Message message={message} key={message.id} loadPosts={loadPosts}/>

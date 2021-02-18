@@ -36,7 +36,7 @@ const Login = () => {
 		<nav className='Login'>
 		  <h2>s'identifer</h2>
 		  <div className='Login__card'>
-		    <form className='Login__card__form' onSubmit={handleSubmit(onSubmit)} className="Register">
+		    <form className='Login__card__form' onSubmit={handleSubmit(onSubmit)}>
 		      <input className='Login__card__form__email' name="identifier" type="email" placeholder="email" ref={register({ required: true })} />
 		      <input className='Login__card__form__password' name="password" type="password" placeholder="password" ref={register({ required: true })} />
 	  	      <input className='Login__card__form__button' type="submit" value="connection"/>

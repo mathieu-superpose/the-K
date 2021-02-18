@@ -1,10 +1,12 @@
 @import 'index.scss';
 
 .Register {
-
+	
 	&__form {
 		display:flex;
 		flex-direction: column;
+		border: 2px solid orange;
+		padding: 20px;
 
 		&__username,
 		&__email,

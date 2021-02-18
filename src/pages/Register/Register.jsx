@@ -34,7 +34,7 @@ const Register = () => {
 
 	return (
 		<div className="Register">
-		  <h2>nouveau compte</h2>
+		<h2>nouveau compte</h2>
 		  <form className="Register__form" onSubmit={handleSubmit(onSubmit)}>
 		    <input className="Register__form__username" name="username" type="text" placeholder="username" ref={register({ required: true })} />
 		    <input className="Register__form__email" name="email" type="email" placeholder="email" ref={register({ required: true })} />
