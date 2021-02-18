@@ -59,13 +59,17 @@ const OwnProfile = () => {
 
   return (
     <nav className="OwnProfile">
-        <p>hello from my own profile again</p>
-        <form className="OwnProfile__details" onSubmit={handleSubmit(updateProfile)}>
-		  <input name="username" type="text" defaultValue={username} ref={register({ required: true })} />
-		  <input name="description" type="text" defaultValue={description} ref={register({ required: true })} />
-	  	  <input type="submit" />
+    	<div className="OwnProfile__card">
+        <h2>Mise à jour de mon profil</h2>
+        <form className="OwnProfile__card__details" onSubmit={handleSubmit(updateProfile)}>
+          <label className="OwnProfile__card__details__label">username</label>
+		  <input className="OwnProfile__card__details__username" name="username" type="text" defaultValue={username} ref={register({ required: true })} />
+		  <label className="OwnProfile__card__details__label">description</label>
+		  <input className="OwnProfile__card__details__description" name="description" type="text" defaultValue={description} ref={register({ required: true })} />
+	  	  <input className="OwnProfile__card__details__button" type="submit" value="Mettre à jour"/>
 	  	  <p>{displayError}</p>
 	    </form>
+	    </div>
     </nav>
   );
 };

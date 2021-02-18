@@ -33,18 +33,20 @@ const Login = () => {
   	}
 
 	return (
-		<div className='Login'>
-		  <form onSubmit={handleSubmit(onSubmit)} className="Register">
-		    <input name="identifier" type="email" placeholder="email" ref={register({ required: true })} />
-		    <input name="password" type="password" placeholder="password" ref={register({ required: true })} />
-	  	    <input type="submit" />
-	  	    <p>{displayError}</p>
-	  	    <Link to="/register">
-          	  <p>Register</p>
-        	</Link>
-	      </form>
-
-	    </div>
+		<nav className='Login'>
+		  <h2>s'identifer</h2>
+		  <div className='Login__card'>
+		    <form className='Login__card__form' onSubmit={handleSubmit(onSubmit)} className="Register">
+		      <input className='Login__card__form__email' name="identifier" type="email" placeholder="email" ref={register({ required: true })} />
+		      <input className='Login__card__form__password' name="password" type="password" placeholder="password" ref={register({ required: true })} />
+	  	      <input className='Login__card__form__button' type="submit" value="connection"/>
+	  	      <p>{displayError}</p>
+	  	      <Link to="/register">
+          	    <p>nouveau compte</p>
+        	  </Link>
+	        </form>
+	      </div>
+	    </nav>
 	);
 };
 

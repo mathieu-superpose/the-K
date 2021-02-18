@@ -33,13 +33,16 @@ const Register = () => {
   	}
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)} className="Register">
-		  <input name="username" type="text" placeholder="username" ref={register({ required: true })} />
-		  <input name="email" type="email" placeholder="email" ref={register({ required: true })} />
-		  <input name="password" type="password" placeholder="password" ref={register({ required: true })} />
-	  	  <input type="submit" />
-	  	  <p>{displayError}</p>
-	    </form>
+		<div className="Register">
+		  <h2>nouveau compte</h2>
+		  <form className="Register__form" onSubmit={handleSubmit(onSubmit)}>
+		    <input className="Register__form__username" name="username" type="text" placeholder="username" ref={register({ required: true })} />
+		    <input className="Register__form__email" name="email" type="email" placeholder="email" ref={register({ required: true })} />
+		    <input className="Register__form__password" name="password" type="password" placeholder="password" ref={register({ required: true })} />
+	  	    <input className="Register__form__button" type="submit" />
+	  	    <p className="Register__form__error">{displayError}</p>
+	      </form>
+	    </div>
 	);
 };
 
