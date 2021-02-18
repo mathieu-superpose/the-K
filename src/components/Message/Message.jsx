@@ -13,6 +13,7 @@ const Message = ({ message, loadPosts }) => {
     const id = useSelector(state => state.id);
     const [displayError, setDisplayError] = useState('');
     const history = useHistory();
+    const [liked, setLiked] = useState(false);
 
     const deletePost = () => {
       fetch(`${url}posts/${message.id}`, {
@@ -27,6 +28,28 @@ const Message = ({ message, loadPosts }) => {
     .catch((error) => setDisplayError('Pas authentifié'));
     }
 
+    const updateLike = () => {
+    const data = {
+      like: message.like
+    }
+
+    liked === false ? data.like += 1 : data.like -= 1;
+
+    fetch(`${url}posts/${message.id}`, {
+      method: 'put',
+      headers: {
+        'Authorization': `Bearer ${Cookies.get('token')}`, 
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then((response) => response.json())
+    .then((response) => {
+        setLiked(!liked)
+        loadPosts()
+    })
+    .catch((error) => setDisplayError('Pas authentifié'));
+  }
 
   return (
     <li className='Message'>
@@ -39,7 +62,7 @@ const Message = ({ message, loadPosts }) => {
 
     	<div className='Message__right'>
         {message.user.id===id ? <img className='Message__right__bin' src={bin} onClick={deletePost} /> : ''}
-    	  <img className='Message__right__heart' src={heart} alt='pixelised heart'/>
+    	  <img className='Message__right__heart' src={heart} alt='pixelised heart' onClick={updateLike} />
         <p className='Message__right__count'>{message.like>0 ? message.like : '\xa0\xa0'}</p>
         <p>{displayError}</p>
     	</div>
