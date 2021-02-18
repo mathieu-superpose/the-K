@@ -42,7 +42,7 @@ const Home = () => {
 
   	useEffect(() => {
     loadPosts();
-  	}, [messages])
+  	}, [])
 
 	return (
 		<div className="Home">
@@ -64,7 +64,7 @@ const Home = () => {
 
       	<ul className='Home__messages'>
       	{messages && messages.map((message) => (
-      		<Message message={message} key={message.id}/>
+      		<Message message={message} key={message.id} loadPosts={loadPosts}/>
       	)).reverse()}
       	</ul>
         <p>{displayError}</p>
