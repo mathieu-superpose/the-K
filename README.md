@@ -7,6 +7,12 @@ An API is required, [this one](https://github.com/felhix/mini-api-social-network
   <img alt="The K logo" src="./public/the_k_logo.svg"/>
 </p>
 
+## How to use
+
+Setup the API (use the recommanded settings).
+
+Download the app and update the API adress in the src/url/url.json
+
 ## Tech
 
 Javascript and [React](https://github.com/facebook/react), [Node Sass](https://github.com/sass/node-sass)
