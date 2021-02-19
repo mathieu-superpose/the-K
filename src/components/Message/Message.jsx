@@ -58,7 +58,7 @@ const Message = ({ message, loadPosts }) => {
   return (
     <li className='Message'>
         
-        {checkAuth===true && 
+        {checkAuth && 
     	<Link to={`/users/${message.user.id}`}>
     	  <p className='Message__username'>{message.user.username}</p>
 		</Link>
@@ -66,7 +66,7 @@ const Message = ({ message, loadPosts }) => {
 
     	<p className='Message__text'>{message.text}</p>
 
-        {checkAuth===true && 
+        {checkAuth &&
     	<div className='Message__right'>
         {message.user.id===id ? <img className='Message__right__bin' src={bin} onClick={deletePost} /> : ''}
     	  <img className='Message__right__heart' src={heart} alt='pixelised heart' onClick={updateLike} />
