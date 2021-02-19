@@ -6,7 +6,7 @@ const Post = ({ createPost, id, displayError }) => {
 
     return (
         <div className='Post'>
-          <h2 className='Post__title'>Des messages de moins de 140 caractères</h2>
+          <h2 className='Post__title'>Le partage d'opinion en moins de 140 caractères</h2>
           <form onSubmit={handleSubmit(createPost)} className='Post__form'>
             <input name="user" type="hidden" value={id} ref={register({ required: true })} />
             <input className='Post__form__text' name="text" type="text" placeholder="nouveau message" ref={register({ required: true, maxLength: 140 })} />

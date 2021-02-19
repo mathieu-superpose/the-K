@@ -13,6 +13,10 @@ Javascript and [React](https://github.com/facebook/react), [Node Sass](https://g
 
 ## Potential Improvements
 
+- Likes
+- List of User Posts
+- Logout
+
 ## Contributors
 
 - [:seedling: Mathieu Joly](https://github.com/mathieu-superpose)
