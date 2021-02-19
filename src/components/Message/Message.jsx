@@ -15,9 +15,7 @@ const Message = ({ message, loadPosts }) => {
     const history = useHistory();
     const [liked, setLiked] = useState(false);
 
-    const checkAuth = () => {
-    return id === '' ? false : true
-    }
+    const checkAuth = id === '' ? false : true;
 
     const deletePost = () => {
       fetch(`${url}posts/${message.id}`, {
@@ -54,6 +52,7 @@ const Message = ({ message, loadPosts }) => {
     })
     .catch((error) => setDisplayError('Pas authentifié'));
   }
+
 
   return (
     <li className='Message'>
