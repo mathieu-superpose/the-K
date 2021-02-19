@@ -58,22 +58,22 @@ const Message = ({ message, loadPosts }) => {
   return (
     <li className='Message'>
         
-        
+        {checkAuth && 
     	<Link to={`/users/${message.user.id}`}>
     	  <p className='Message__username'>{message.user.username}</p>
 		</Link>
-        
+        }
 
     	<p className='Message__text'>{message.text}</p>
 
-        
+        {checkAuth &&
     	<div className='Message__right'>
         {message.user.id===id ? <img className='Message__right__bin' src={bin} onClick={deletePost} /> : ''}
     	  <img className='Message__right__heart' src={heart} alt='pixelised heart' onClick={updateLike} />
         <p className='Message__right__count'>{message.like>0 ? message.like : '\xa0\xa0'}</p>
         <p>{displayError}</p>
     	</div>
-        
+        }
     
     </li>
   );
