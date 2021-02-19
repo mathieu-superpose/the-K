@@ -20,7 +20,7 @@ Javascript and [React](https://github.com/facebook/react), [Node Sass](https://g
 ## Potential Improvements
 
 - Logout button
-- Maintain connection with cooies
+- Maintain connection with cookies
 
 ## Contributors
 
