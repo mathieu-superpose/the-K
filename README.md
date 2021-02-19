@@ -21,6 +21,7 @@ Javascript and [React](https://github.com/facebook/react), [Node Sass](https://g
 
 - Logout button
 - Maintain connection with cookies
+- Api modification to associate a user to each Like
 
 ## Contributors
 
