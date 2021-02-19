@@ -19,9 +19,8 @@ Javascript and [React](https://github.com/facebook/react), [Node Sass](https://g
 
 ## Potential Improvements
 
-- Likes
-- List of User Posts
-- Logout
+- Logout button
+- Maintain connection with cooies
 
 ## Contributors
 
